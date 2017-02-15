@@ -16,6 +16,11 @@ class ConfigModule:
 		self.nom= nom
 		self.save()
 
+	def setVersionFRMC(self,valeur):
+		# Fonction permettant de modifier la version du FReveilModuleCreator
+		self.versionFRMC= valeur
+		self.save()
+
 	def setArduino(self,arduino):
 		self.arduino = arduino
 		self.save()
@@ -28,7 +33,7 @@ class ConfigModule:
 	def save (self):
 		# Sauvegarde du fichier
 		chaine = Outils.constitueBalise("Nom",str(self.nom)) + "\n" + Outils.constitueBalise("Arduino",str(self.arduino)) + "\n" 
-		chaine += Outils.constitueBalise("RessourceAudio",str(self.ressourceAudio)) + "\n"
+		chaine += Outils.constitueBalise("RessourceAudio",str(self.ressourceAudio)) + "\n"+ Outils.constitueBalise("VersionFMRC",str(self.versionFRMC))+"\n"
 		Outils.ecrireFichier(self.endroit,chaine)
 
 	def openConfig(self):
@@ -39,5 +44,6 @@ class ConfigModule:
 			self.arduino = Outils.recupereBaliseAuto(chaine, "Arduino", 1, "Arduino") == "True"
 			self.ressourceAudio = Outils.recupereBaliseAuto(chaine, "RessourceAudio", 1) == "True"
 			self.nom =Outils.recupereBaliseAuto(chaine,"Nom",1)
+			self.versionFRMC =Outils.recupereBaliseAuto(chaine,"VersionFMRC",1)
 			
 

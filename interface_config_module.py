@@ -12,6 +12,7 @@ class InterfaceConfigModule:
 		# Annonce et crédit du programme
 		print("Bienvenue dans l'interface de configuration du module du FReveil.")
 		print("Cette interface a été crée par Fayçal Bousmaha.")
+		print("Version : "+self.conf.versionFRMC)
 		print()
 		print()
 
