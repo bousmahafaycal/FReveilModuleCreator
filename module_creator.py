@@ -5,7 +5,7 @@ import time
 class ModuleCreator:
 	# Classe permettant de créer un module pour le FReveil
 	def __init__(self):
-		self.versionFReveilModuleCreator = "1.1"
+		self.versionFReveilModuleCreator = "1.2.1"
 		self.annonce()
 		self.demandeInfos()
 		self.creeDossier()
@@ -42,7 +42,7 @@ class ModuleCreator:
 		c.setNom(self.nom)
 		c.setArduino(self.arduino)
 		c.setRessourceAudio(self.ressourceAudio)
-		c.setVersionFRMC(self.versionFReveilModuleCreators)
+		c.setVersionFRMC(self.versionFReveilModuleCreator)
 
 
 	def createFile(self):
