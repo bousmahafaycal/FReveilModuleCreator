@@ -7,7 +7,8 @@ class ConfigModule:
 	def initialisation(self):
 		# Initialise les variables
 		self.nom = ""
-		self.arduino = ""
+		self.arduino = False
+		self.ressourceAudio = False
 
 
 	def setNom(self,nom):
@@ -19,10 +20,15 @@ class ConfigModule:
 		self.arduino = arduino
 		self.save()
 
+	def setRessourceAudio(self,ressourceAudio):
+		self.ressourceAudio = ressourceAudio
+		self.save()
+
 
 	def save (self):
 		# Sauvegarde du fichier
-		chaine = Outils.constitueBalise("Nom",str(self.nom)) + "\n" + Outils.constitueBalise("Arduino",str(self.arduino))
+		chaine = Outils.constitueBalise("Nom",str(self.nom)) + "\n" + Outils.constitueBalise("Arduino",str(self.arduino)) + "\n" 
+		chaine += Outils.constitueBalise("RessourceAudio",str(self.ressourceAudio)) + "\n"
 		Outils.ecrireFichier(self.endroit,chaine)
 
 	def openConfig(self):
@@ -31,6 +37,7 @@ class ConfigModule:
 		if (Outils.testPresence(self.endroit)):
 			chaine = Outils.lireFichier(self.endroit)
 			self.arduino = Outils.recupereBaliseAuto(chaine, "Arduino", 1, "Arduino") == "True"
+			self.ressourceAudio = Outils.recupereBaliseAuto(chaine, "RessourceAudio", 1) == "True"
 			self.nom =Outils.recupereBaliseAuto(chaine,"Nom",1)
 			
 
