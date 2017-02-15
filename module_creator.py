@@ -5,7 +5,7 @@ import time
 class ModuleCreator:
 	# Classe permettant de créer un module pour le FReveil
 	def __init__(self):
-		self.versionFReveilModuleCreator = "1.2.1"
+		self.versionFReveilModuleCreator = "1.2.2"
 		self.annonce()
 		self.demandeInfos()
 		self.creeDossier()
@@ -28,7 +28,7 @@ class ModuleCreator:
 		print()
 		self.arduino = input("Ce module compte-il communiquer avec l'Arduino (o/N) ? ") == "o"
 		print()
-		self.ressourceAudio = input("Souhaitez-vous utiliser de l'audio (musique ou synthèse vocale par exempel) dans ce module (o/N) ? ")
+		self.ressourceAudio = input("Souhaitez-vous utiliser de l'audio (musique ou synthèse vocale par exempel) dans ce module (o/N) ? ") == "o"
 
 
 	def creeDossier(self):
@@ -55,6 +55,7 @@ class ModuleCreator:
 			chaine2 = """
 def giveRequestAudio(id):
 	# Lache l'autorisation d'utiliser l'audio pour qu'un autre module puisse l'utiliser.
+	conf = Config()
 	conf.setLockAudio(False,id)
 
 def requestAudio(): 
@@ -84,7 +85,6 @@ Module créé le : {}
 Nom initial du module : {}
 
 \"""
-from config_module import *
 from config import *
 
 def start(arguments):

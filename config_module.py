@@ -9,6 +9,7 @@ class ConfigModule:
 		self.nom = ""
 		self.arduino = False
 		self.ressourceAudio = False
+		self.versionFRMC = ""
 
 
 	def setNom(self,nom):
